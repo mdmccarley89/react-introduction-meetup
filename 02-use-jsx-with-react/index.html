@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Use JSX with React</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <!-- <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script> -->
+</head>
+<body>
+  <div id="root"></div>
+  <!-- you could use React.createElement to create a React app but its not
+  the easiest so React created JSX 
+
+  JSX looks similar to html and behaves in similar ways but is just JS -->
+
+  <script type="text/javascript">
+    const rootElement = document.getElementById('root');
+    // React.createElement way
+    const createdElement = React.createElement(
+      'div',
+      {className: 'container'},
+      'Hello World'
+    );
+
+    // create div as JSXElement with className and Text for children using JSX
+
+    // try to render without Babel
+    // include babel standalone after showing syntaxError
+    // change script type to text/babel (should now work)
+
+    // highlight using className (just like we did with React.createElement)
+    // attributes get converted to "props"
+
+    // externalize 'Hello World' to a variable and show how to in JSX
+    // talk about how {} enters 'JavaScript land' and exits 'JSX land'
+
+    // you can also enter JavaScript land when passing props in JSX
+    // show how to externalize the className prop to a js variable
+    // use js concatenation in the prop value
+
+    // show how to externalize all props into an object and use the spread operator in the JSX with a self-closing react component
+
+    // show how to override passed/spread props by location in the JSX
+  
+    ReactDOM.render(createdElement, rootElement);
+  </script>
+  
+</body>
+</html>
