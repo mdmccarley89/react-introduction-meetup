@@ -54,8 +54,25 @@
     // 10. move className sizing logic into function Box so the user doesn't have to know
     // 11. note that inline styles don't vendor prefix automatically, I recommend checking out: styled components or emotion for more full-featured options
 
+    function Box({style, size, className = '', ...rest}) {
+      const sizeClassName = size ? `box--${size}` : '';
+      return (
+        <div>
+          <div
+            className={`box ${className} ${sizeClassName}`}
+            style={{paddingLeft: 20, ...style}}
+            {...rest}
+          />
+        </div>
+      )
+    }
+
     const element = (
-      <div>Put a box here</div>
+      <div>
+        <Box size='small' style={{backgroundColor: 'lightblue'}}>small box</Box>
+        <Box size='medium' style={{backgroundColor: 'pink'}}>medium box</Box>
+        <Box size='large' style={{backgroundColor: 'orange'}}>large box</Box>
+      </div>
     )
 
     ReactDOM.render(

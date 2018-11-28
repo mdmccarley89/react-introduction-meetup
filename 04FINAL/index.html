@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-  <!-- <script crossorigin src="https://unpkg.com/prop-types@15.6.2/prop-types.js"></script> -->
+  <script crossorigin src="https://unpkg.com/prop-types@15.6.2/prop-types.js"></script>
   <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
@@ -31,9 +31,15 @@
         </div>
       )
     }
+
+    SayHello.propTypes = {
+      firstName: PropTypes.string.isRequired,
+      lastName: PropTypes.string.isRequired
+    }
+
     
     ReactDOM.render(
-      <SayHello firstName={true} />,
+      <SayHello firstName='Matt' lastName='McCarley' />,
       document.getElementById('root')
     );
   </script>

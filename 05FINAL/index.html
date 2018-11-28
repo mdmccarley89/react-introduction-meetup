@@ -23,10 +23,12 @@
     // 5. then refactor back to JSX instead of .createElement
 
     function Message({message}) {
-      return <div>{message}</div>
+      return message
+        ? <div>{message}</div>
+        : <div>No Message</div>;
     }
     ReactDOM.render(
-      <Message message="Hello World" />,
+      <Message message={null} />,
       document.getElementById('root'),
     )
   </script>

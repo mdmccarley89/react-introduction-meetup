@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Use JSX with React</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script crossorigin src="https://unpkg.com/prop-types@15.6.2/prop-types.js"></script>
+  <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    // 1. current app only shows current time if we refresh the page
+    // 2. create function called tick that has time, element and render
+    // 3. call tick
+    // 4. setInterval to run tick every second
+    // 5. show how react is smart in what parts of the DOM it updates with inspector
+      // a. use two inputs to show how it works and doesn't totally refresh whole sections of the DOM
+      // b. replace JSX with template literal and innerHTML instead of ReactDOM.render
+        // - make sure to show the difference in the DOM changes between two methods
+        // - with ReactDOM, it only updates the part of the DOM that changed, not the whole DOM
+      // c. you wouldn't ever rerender the whole application like this every second, its just illustrative
+
+    function tick() {
+      const rootElement = document.getElementById('root');
+      const time = new Date().toLocaleTimeString();
+      const element = (
+        <div>
+          <input value={time}></input>
+          <input value={time}></input>
+        </div>
+      );
+      ReactDOM.render(element, rootElement);
+    }
+    tick();
+    setInterval(tick, 1000);
+  </script>
+
+</body>
+
+</html>
