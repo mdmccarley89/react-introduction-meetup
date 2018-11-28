@@ -13,7 +13,7 @@
   <div id="root"></div>
   <script type="text/babel">
     const rootElement = document.getElementById('root');
-    // 1. abstract the duplicate Hello World divs into a const and use interpolation to include
+    // 1. abstract the duplicat Hello World divs into a const and use interpolation to include
     // 2. show how to use a function to reuse code and parameterize code so that message can be flexible
     // 3. show how JSX is more 'composable' than function calls
       // a. show how React.createElement can take a function as a first param instead of a string
@@ -27,11 +27,14 @@
       // a. i.e. write it so it appears like normal markup instead of an attribute
       // b. show how to put a message within a message
         // - show that in the babel repl too
+    const helloWorld = <div>Hello World</div>;
+
+    const Message = (props) => <div>{props.children}</div>;
 
     const element = (
       <div className='container'>
-        <div>Hello World</div>
-        <div>Hello World</div>
+        <Message>Hello World</Message>
+        <Message>Goodbye World</Message>
       </div>
     )
 
