@@ -16,8 +16,32 @@
   <div id="root"></div>
 
   <script type="text/babel">
-    // 1. console.log this.state.lapse in a cb in this.setState to show the memory leak if the component is deleted.
-    // 2. fix the memory leak by clearing the interval on this.timer on componentWillUnmount
+    // 1. create a function called StopWatch that returns the UI
+      // a. The UI should be a div with a label(0ms) and two buttons (start and clear);
+    // 2. create a const element that is JSX of the <StopWatch />
+    // 3. use ReactDOM.render() to render the element to the root
+    // 4. change 0ms to {lapse}ms and destructure lapse from props when passing into the function
+    // 5. change Start to be a ternary that shows Stop when running and start otherwise
+    // 6. pass the props running and lapse into StopWatch
+    // 7. use class StopWatch that extends React.Component
+      // a. show in the Babel Repl what this transpiles to
+    // 8. add render method to the class and move return from function to the render method
+    // 9. destructure this.props into consts and show how it renders
+    // 10. remove from props and instead initialize with state
+
+    // 11. now we need to dynamically update state as we go
+    // 12. add handleRunClick arrow function property on the class to onClick on the button
+      // a. alert 'you clicked' to test that it is working
+      // b. change to this.setState() (show where this is on the window object in the dev tools)
+        // - setState to lapse: 10 and running: true
+    // 13. add handleClearClick arrow function to the clear button
+    // 14. change handleRunClick to get a real starttime
+      // a. get starttime with date.now - this.state.lapse
+      // b. use setinterval (0) to setstate with date.now - starttime
+      // c. setstate to running true
+      // d. change it further to toggle running state and then based on running state either clear the interval or setinterval
+    // 15. change handleClearClick to clear the interval as well
+    // 16. this implementation has a memory leak
     class StopWatch extends React.Component {
       state = {
         lapse: 0,

@@ -1,73 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Use JSX with React</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script crossorigin src="https://unpkg.com/prop-types@15.6.2/prop-types.js"></script>
+  <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
 <body>
-<script src="https://unpkg.com/react@16.3.0/umd/react.development.js"></script>
-<script src="https://unpkg.com/react-dom@16.3.0/umd/react-dom.development.js"></script>
-<script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
-<div id="root"></div>
+  <div id="root"></div>
 
-<script type="text/babel">
-class StopWatch extends React.Component {
-  state = {lapse: 0, running: false}
-  handleRunClick = () => {
-    this.setState(state => {
-      if (state.running) {
-        clearInterval(this.timer)
-      } else {
-        const startTime =
-          Date.now() - this.state.lapse
-        this.timer = setInterval(() => {
-          this.setState({
-            lapse: Date.now() - startTime,
-          })
-        })
-      }
-      return {running: !state.running}
-    })
-  }
-  handleClearClick = () => {
-    clearInterval(this.timer)
-    this.setState({lapse: 0, running: false})
-  }
-  render() {
-    const {lapse, running} = this.state
-    const buttonStyles = {
-      border: '1px solid #ccc',
-      background: '#fff',
-      fontSize: '2em',
-      padding: 15,
-      margin: 5,
-      width: 200,
+  <script type="text/babel">
+    // 1. create a function called StopWatch that returns the UI
+      // a. The UI should be a div with a label(0ms) and two buttons (start and clear);
+    // 2. create a const element that is JSX of the <StopWatch />
+    // 3. use ReactDOM.render() to render the element to the root
+    // 4. change 0ms to {lapse}ms and destructure lapse from props when passing into the function
+    // 5. change Start to be a ternary that shows Stop when running and start otherwise
+    // 6. pass the props running and lapse into StopWatch
+    // 7. use class StopWatch that extends React.Component
+      // a. show in the Babel Repl what this transpiles to
+    // 8. add render method to the class and move return from function to the render method
+    // 9. destructure this.props into consts and show how it renders
+    // 10. remove from props and instead initialize with state
+
+    // 11. now we need to dynamically update state as we go
+    // 12. add handleRunClick arrow function property on the class to onClick on the button
+      // a. alert 'you clicked' to test that it is working
+      // b. change to this.setState() (show where this is on the window object in the dev tools)
+        // - setState to lapse: 10 and running: true
+    // 13. add handleClearClick arrow function to the clear button
+    // 14. change handleRunClick to get a real starttime
+      // a. get starttime with date.now - this.state.lapse
+      // b. use setinterval (0) to setstate with date.now - starttime
+      // c. setstate to running true
+      // d. change it further to toggle running state and then based on running state either clear the interval or setinterval
+    // 15. change handleClearClick to clear the interval as well
+    // 16. this implementation has a memory leak
+    function StopWatch() {
+      return (
+        <div>
+          <label>0ms</label>
+          <button>Start</button>
+          <button>Clear</button>
+        </div>
+      )
     }
-    return (
-      <div style={{textAlign: 'center'}}>
-        <label
-          style={{
-            fontSize: '5em',
-            display: 'block',
-          }}
-        >
-          {lapse}ms
-        </label>
-        <button
-          onClick={this.handleRunClick}
-          style={buttonStyles}
-        >
-          {running ? 'Stop' : 'Start'}
-        </button>
-        <button
-          onClick={this.handleClearClick}
-          style={buttonStyles}
-        >
-          Clear
-        </button>
-      </div>
-    )
-  }
-}
+    const element = <StopWatch />;
+    ReactDOM.render(
+      element,
+      document.getElementById('root');
+    );
 
-const element = <StopWatch />
-ReactDOM.render(
-  element,
-  document.getElementById('root'),
-)
-</script>
+
+  </script>
+
 </body>
+
+</html>

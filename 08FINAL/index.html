@@ -27,6 +27,7 @@
     // 7. console.log the event in updateUsername and show how the event is proxied by React
       // a. use event.nativeEvent to see the native event (usually don't need this)
       // b. https://reactjs.org/docs/events.html
+      
     const state = {eventCount: 0, username: ''}
 
     function App() {
@@ -36,14 +37,24 @@
             There have been {state.eventCount} events
           </p>
           <p>
-            <button>⚛️</button>
+            <button onClick={increment}>⚛️</button>
           </p>
           <p>You typed: {state.username}</p>
           <p>
-            <input />
+            <input onChange={updateUsername}/>
           </p>
         </div>
       )
+    }
+
+    function updateUsername(event) {
+      console.log(event);
+      console.log(event.nativeEvent);
+      setState({username: event.target.value});
+    }
+
+    function increment() {
+      return setState({eventCount: state.eventCount + 1});
     }
 
     function setState(newState) {
